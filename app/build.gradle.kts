@@ -1,13 +1,19 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    id("org.jetbrains.kotlin.kapt")
+    id("com.google.dagger.hilt.android") version "2.48"
+
+
 }
+
+
 
 android {
     namespace = "com.example.horoscapp"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
+
 
     defaultConfig {
         applicationId = "com.example.horoscapp"
@@ -36,11 +42,20 @@ android {
         jvmTarget = "11"
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 
+
+
 }
+
+
+
+
+
+
+
 
 dependencies {
 
@@ -52,6 +67,10 @@ dependencies {
     //NavComponent
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:${navVersion}")
+
+    //DaggerHilt
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
 
 
 
@@ -66,3 +85,4 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
